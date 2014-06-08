@@ -3,7 +3,8 @@ data<-read.table("household_power_consumption.txt", sep=";",header=TRUE, na.stri
 data1<-subset(data, Date=="1/2/2007" | Date=="2/2/2007") ##subset to only see two dates
 data2<-as.Date(data1$Date, format="%d/%m/%Y") ## formatting dates
 datumfix<-paste(data2, data1$Time)
-timefix <- strptime(datumfix, format="%Y-%m-%d %H:%M:%S")## str(dates)
+timefix <- strptime(datumfix, format="%Y-%m-%d %H:%M:%S")
+## creating 4 plots on the same canvas
 par(mfcol = c(2, 2), mar = c(4, 4, 4, 2), oma = c(1, 1, 0, 0))
 plot(timefix,data1$Global_intensity, xlab="", ylab="Global Active Power", pch=33)
 lines(timefix,data1$Global_intensity)
